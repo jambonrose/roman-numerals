@@ -34,3 +34,13 @@ Road Map
 - 0.6 Add support for Vinculum
 
 - 1.0 Full feature release
+
+Testing
+-------
+
+The structure of the project forces tests to run on an installed version
+of the code.
+
+You can run the tests directly with `python setup.py test`.
+Alternatively, you could install the package with `pip install -e .` or
+`python setup.py develop` and then run tests with `py.test`.

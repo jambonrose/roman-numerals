@@ -1,0 +1,5 @@
+include .pylintrc
+include LICENSE
+recursive-include requirements *.txt
+recursive-include tests *.py
+global-exclude *.py[cod] __pycache__ *.so *.dylib
