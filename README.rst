@@ -44,3 +44,6 @@ of the code.
 You can run the tests directly with `python setup.py test`.
 Alternatively, you could install the package with `pip install -e .` or
 `python setup.py develop` and then run tests with `py.test`.
+
+To run linters, checkers, and tests on multiple Python versions, simply
+invoke `tox`.

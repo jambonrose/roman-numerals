@@ -20,12 +20,12 @@ HERE = path.abspath(path.dirname(__file__))
 
 # Get the long description from the Read Me
 with codec_open(path.join(HERE, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()
+    LONG_DESCRIPTION = f.read()
 
 # Get test dependencies
-test_reqs = 'requirements/test_requirements.txt'
-with codec_open(path.join(HERE, test_reqs), encoding='utf-8') as f:
-    tests_require = f.read().splitlines()
+TEST_REQS = 'requirements/test_requirements.txt'
+with codec_open(path.join(HERE, TEST_REQS), encoding='utf-8') as f:
+    TESTS_REQUIRE = f.read().splitlines()
 
 
 setup(
@@ -36,7 +36,7 @@ setup(
         'A library to convert between integers'
         ' and Unicode Roman numerals.'
     ),
-    long_description=long_description,
+    long_description=LONG_DESCRIPTION,
     url='https://github.com/jambonrose/roman-numerals',
 
     packages=find_packages('src'),
@@ -45,7 +45,7 @@ setup(
 
     setup_requires=['pytest-runner'],
     test_suite='tests',
-    tests_require=tests_require,
+    tests_require=TESTS_REQUIRE,
 
     author='Andrew Pinkham',
     author_email='hello at andrewsforge dot com',
