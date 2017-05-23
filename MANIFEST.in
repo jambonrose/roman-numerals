@@ -2,7 +2,9 @@ include .coveragerc
 include .isort.cfg
 include .pylintrc
 include LICENSE
+include mypy.ini
 include tox.ini
 recursive-include requirements *.txt
+recursive-include stubs *.pyi
 recursive-include tests *.py
 global-exclude *.py[cod] __pycache__ *.so *.dylib

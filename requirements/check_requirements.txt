@@ -2,6 +2,7 @@ check-manifest==0.35
 docutils==0.13.1
 flake8==3.3.0
 isort==4.2.5
+mypy==0.511
 Pygments==2.2.0
 pylint==1.7.1
 readme-renderer==17.2
