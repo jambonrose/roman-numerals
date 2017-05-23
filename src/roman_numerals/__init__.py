@@ -38,7 +38,7 @@ STANDARD_TRANS = 'ⅯⅮⅭⅬⅫⅪⅩⅨⅧⅦⅥⅤⅣⅢⅡⅠ'
 LOWERCASE_TRANS = 'ⅿⅾⅽⅼⅻⅺⅹⅸⅷⅶⅵⅴⅳⅲⅱⅰ'
 
 
-def convert_to_numeral(decimal_integer, mode=STANDARD):
+def convert_to_numeral(decimal_integer: int, mode: int = STANDARD) -> str:
     """Convert a decimal integer to a Roman numeral"""
     return_list = []
     remainder = decimal_integer

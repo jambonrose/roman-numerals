@@ -81,8 +81,8 @@ from roman_numerals import LOWERCASE, convert_to_numeral
     (9001, 'ⅯⅯⅯⅯⅯⅯⅯⅯⅯⅠ'),
 ])
 def test_standard_numeral_conversion(
-        decimal_integer, expected_numeral
-):
+        decimal_integer: int, expected_numeral: str,
+) -> None:
     """
     Test conversion from integers to uppercase Unicode Roman numerals
     """
@@ -164,8 +164,8 @@ def test_standard_numeral_conversion(
     (9001, 'ⅿⅿⅿⅿⅿⅿⅿⅿⅿⅰ'),
 ])
 def test_lowercase_numeral_conversion(
-        decimal_integer, expected_numeral,
-):
+        decimal_integer: int, expected_numeral: str,
+) -> None:
     """
     Test conversion from integers to lowercase Unicode Roman numerals
     """
