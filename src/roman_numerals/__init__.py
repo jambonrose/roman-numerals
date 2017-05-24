@@ -2,7 +2,7 @@
 Library to convert to and from Roman numerals in various encodings
 """
 
-from re import sub as substitute
+from re import match, sub as substitute
 
 # Operation Modes
 STANDARD = 1
@@ -58,3 +58,25 @@ def convert_to_numeral(decimal_integer: int, mode: int = STANDARD) -> str:
         trans_to_lowercase = str.maketrans(STANDARD_TRANS, LOWERCASE_TRANS)
         numeral_string = numeral_string.translate(trans_to_lowercase)
     return numeral_string
+
+
+def convert_to_integer(roman_numeral: str) -> int:
+    """Convert a Roman numeral to a decimal integer"""
+    return_value = 0
+    partial_numeral = roman_numeral
+
+    for full_string, shortening in SHORTENINGS:
+        partial_numeral = substitute(
+            r'%s$' % shortening,
+            full_string,
+            partial_numeral,
+        )
+
+    for integer, numeral in ROMAN_NUMERAL_TABLE:
+        pattern_match = match(r'^(%s)*' % numeral, partial_numeral)
+        if pattern_match:
+            chars_matched = len(pattern_match.group())
+            numerals_matched = chars_matched // len(numeral)
+            return_value += numerals_matched * integer
+            partial_numeral = partial_numeral[chars_matched:]
+    return return_value
