@@ -5,12 +5,12 @@ import pytest
 
 from roman_numerals import convert_to_integer
 
-from .parameters import STANDARD_PARAMETERS
+from .parameters import LOWERCASE_PARAMETERS, STANDARD_PARAMETERS
 
 
 @pytest.mark.parametrize(
     "expected_integer, roman_numeral",
-    STANDARD_PARAMETERS)
+    LOWERCASE_PARAMETERS + STANDARD_PARAMETERS)
 def test_integer_conversion(
         roman_numeral: str, expected_integer: int,
 ) -> None:

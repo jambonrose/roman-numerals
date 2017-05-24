@@ -62,9 +62,13 @@ def convert_to_numeral(decimal_integer: int, mode: int = STANDARD) -> str:
 
 def convert_to_integer(roman_numeral: str) -> int:
     """Convert a Roman numeral to a decimal integer"""
-    return_value = 0
-    partial_numeral = roman_numeral
 
+    # ensure all characters are in the standard/uppercase set
+    trans_to_uppercase = str.maketrans(LOWERCASE_TRANS, STANDARD_TRANS)
+    # named partial_numeral because it will be shortened in loop below
+    partial_numeral = roman_numeral.translate(trans_to_uppercase)
+
+    # remove Unicode shortenings in favor of chars in conversion table
     for full_string, shortening in SHORTENINGS:
         partial_numeral = substitute(
             r'%s$' % shortening,
@@ -72,6 +76,8 @@ def convert_to_integer(roman_numeral: str) -> int:
             partial_numeral,
         )
 
+    # convert uppercase roman numerals to integer
+    return_value = 0
     for integer, numeral in ROMAN_NUMERAL_TABLE:
         pattern_match = match(r'^(%s)*' % numeral, partial_numeral)
         if pattern_match:
