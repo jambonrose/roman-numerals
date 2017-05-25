@@ -9,7 +9,7 @@ python:
 cache:
   pip: true
 install:
-  - python setup.py install
+  - pip install .
   - pip install codecov
 script:
   - py.test --cov=roman_numerals -vv tests
