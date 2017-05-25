@@ -14,6 +14,7 @@ dist:
 	gpg --armor --detach-sign -u 5878672C -a dist/roman-numerals*.tar.gz
 
 release:
+	git tag v`bumpversion --dry-run --list patch | grep current | cut -d'=' -f 2`
 	twine upload dist/*
 
 clean:
