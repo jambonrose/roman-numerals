@@ -34,7 +34,7 @@ with codec_open(path.join(HERE, INSTALL_REQS), encoding='utf-8') as f:
 
 setup(
     name='roman-numerals',
-    version='0.0.1',  # PEP 440 Compliant Semantic Versioning
+    version='0.1.0',  # PEP 440 Compliant Semantic Versioning
     keywords=['text', 'roman', 'numerals', 'convert'],
     description=(
         'A library to convert between integers'
