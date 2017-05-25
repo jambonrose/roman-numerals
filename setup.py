@@ -27,6 +27,10 @@ TEST_REQS = 'requirements/test_requirements.txt'
 with codec_open(path.join(HERE, TEST_REQS), encoding='utf-8') as f:
     TESTS_REQUIRE = f.read().splitlines()
 
+# Get test dependencies
+INSTALL_REQS = 'requirements/install_requirements.txt'
+with codec_open(path.join(HERE, INSTALL_REQS), encoding='utf-8') as f:
+    INSTALL_REQUIRE = f.read().splitlines()
 
 setup(
     name='roman-numerals',
@@ -44,6 +48,7 @@ setup(
     zip_safe=False,
 
     setup_requires=['pytest-runner'],
+    install_requires=INSTALL_REQUIRE,
     test_suite='tests',
     tests_require=TESTS_REQUIRE,
 

@@ -1,6 +1,8 @@
 """
 Test conversion from integer to Roman numeral
 """
+from typing import Any
+
 import pytest
 
 from roman_numerals import LOWERCASE, convert_to_numeral
@@ -32,3 +34,36 @@ def test_lowercase_numeral_conversion(
     assert (
         convert_to_numeral(decimal_integer, mode=LOWERCASE) == expected_numeral
     )
+
+
+@pytest.mark.parametrize("non_integer_values", [
+    'hello',
+    1.0,
+    True,
+    set(),
+    {'hello': 5},
+])
+def test_invalid_types(non_integer_values: Any) -> None:
+    """
+    Ensure that passing in non-integers results in Type exceptions
+    """
+    with pytest.raises(TypeError):
+        convert_to_numeral(non_integer_values)
+
+
+@pytest.mark.parametrize("invalid_mode_values", [
+    'moo',
+    True,
+    False,
+    1000,
+    -5,
+    19.04,
+    set([1, 2, 3]),
+    {'hi': 'there'},
+])
+def test_invalid_mode_values(invalid_mode_values: Any) -> None:
+    """
+    Ensure that passing in non-integers results in Type exceptions
+    """
+    with pytest.raises(ValueError):
+        convert_to_numeral(10, mode=invalid_mode_values)
