@@ -111,7 +111,7 @@ def convert_to_integer(roman_numeral: str) -> int:
     # convert uppercase roman numerals to integer
     return_value = 0
     for integer, numeral in ROMAN_NUMERAL_TABLE:
-        pattern_match = match(r'^(%s)*' % numeral, partial_numeral)
+        pattern_match = match(r'^(%s)+' % numeral, partial_numeral)
         if pattern_match:
             chars_matched = len(pattern_match.group())
             numerals_matched = chars_matched // len(numeral)
