@@ -1,0 +1,17 @@
+branches:
+  only:
+    - development
+language: python
+python:
+  - 3.4
+  - 3.5
+  - 3.6
+cache:
+  pip: true
+install:
+  - ./setup.py develop
+  - pip install codecov
+script:
+  - py.test --cov=roman_numerals -vv tests
+after_success:
+  - codecov
