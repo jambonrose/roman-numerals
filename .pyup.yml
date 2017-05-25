@@ -1,0 +1,5 @@
+# https://pyup.io/docs/configuration/
+
+update: all
+pin: True
+schedule: "every week on thursday"
