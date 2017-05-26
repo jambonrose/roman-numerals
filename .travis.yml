@@ -9,6 +9,7 @@ python:
 cache:
   pip: true
 install:
+  - pip install six wheel setuptools
   - pip install -r requirements/check_requirements.txt
   - pip install -r requirements/test_requirements.txt
   - pip install -r requirements/development_requirements.txt
