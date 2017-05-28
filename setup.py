@@ -18,14 +18,19 @@ from setuptools import find_packages, setup
 HERE = path.abspath(path.dirname(__file__))
 
 
-# Get the long description from the Read Me
-with codec_open(path.join(HERE, 'README.rst'), encoding='utf-8') as f:
-    LONG_DESCRIPTION = f.read()
+def load_file_contents(file_path, as_list=True):
+    """Load file as string or list"""
+    abs_file_path = path.join(HERE, file_path)
+    with codec_open(abs_file_path, encoding='utf-8') as file_pointer:
+        if as_list:
+            return file_pointer.read().splitlines()
+        return file_pointer.read()
 
+
+# Get the long description from the Read Me
+LONG_DESCRIPTION = load_file_contents('README.rst', as_list=False)
 # Get test dependencies
-TEST_REQS = 'requirements/test_requirements.txt'
-with codec_open(path.join(HERE, TEST_REQS), encoding='utf-8') as f:
-    TESTS_REQUIRE = f.read().splitlines()
+TESTS_REQUIRE = load_file_contents('requirements/test_requirements.txt')
 
 setup(
     name='roman-numerals',
