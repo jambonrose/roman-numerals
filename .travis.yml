@@ -14,6 +14,12 @@ install:
   - pip install codecov pytest-travis-fold
   - ./setup.py develop
 script:
+  -  python setup.py check --strict --metadata --restructuredtext
+  -  check-manifest .
+  -  flake8 src tests setup.py
+  -  isort --verbose --check-only --diff --recursive src tests setup.py
+  -  mypy src tests
+  -  pylint src tests setup.py
   - py.test --cov-report= --cov=\. -vv tests
 after_success:
   - coverage combine --append && coverage report && coverage html && codecov
