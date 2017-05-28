@@ -11,9 +11,9 @@ cache:
 install:
   - pip install six wheel setuptools  # for Travis Py3.4
   - find requirements -name '*.txt' | xargs -I {} pip install -r {}
-  - pip install codecov
+  - pip install codecov pytest-travis-fold
   - ./setup.py develop
 script:
-  - py.test --cov=roman_numerals -vv tests
+  - py.test --cov-report= --cov=\. -vv tests
 after_success:
-  - codecov
+  - coverage combine --append && coverage report && coverage html && codecov

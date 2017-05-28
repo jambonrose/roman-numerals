@@ -1,11 +1,14 @@
 [paths]
-source = src
+source =
+   src/roman_numerals
+   */site-packages/roman_numerals
 
 [run]
 branch = true
 source =
-    src
-    tests
+    roman_numerals
+omit = 
+    setup.py
 parallel = true
 
 [report]
