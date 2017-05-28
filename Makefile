@@ -18,11 +18,14 @@ release:
 	twine upload dist/*
 
 clean:
-	find . -name "*.pyc" -delete
+	find . -name "*.py[co]" -delete
 	find . -name "__pycache__" -delete
-	rm -rf src/*.egg-info
-	rm -rf .coverage
+	rm -f .coverage
+	rm -f .coverage.*
+	rm -rf .eggs
+	rm -rf .mypy_cache
 	rm -rf .tox
 	rm -rf build
 	rm -rf dist
 	rm -rf htmlcov
+	rm -rf src/*.egg-info
