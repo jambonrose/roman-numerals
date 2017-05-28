@@ -9,12 +9,10 @@ python:
 cache:
   pip: true
 install:
-  - pip install six wheel setuptools
-  - pip install -r requirements/check_requirements.txt
-  - pip install -r requirements/test_requirements.txt
-  - pip install -r requirements/development_requirements.txt
+  - pip install six wheel setuptools  # for Travis Py3.4
+  - find requirements -name '*.txt' | xargs -I {} pip install -r {}
   - pip install codecov
-  - pip install .
+  - ./setup.py develop
 script:
   - py.test --cov=roman_numerals -vv tests
 after_success:
