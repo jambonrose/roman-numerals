@@ -14,12 +14,13 @@ install:
   - pip install codecov pytest-travis-fold
   - ./setup.py develop
 script:
-  -  python setup.py check --strict --metadata --restructuredtext
-  -  check-manifest .
-  -  flake8 src tests setup.py
-  -  isort --verbose --check-only --diff --recursive src tests setup.py
-  -  mypy src tests
-  -  pylint src tests setup.py
+  - python setup.py check --strict --metadata --restructuredtext
+  - check-manifest .
+  - flake8 src tests setup.py
+  # don't run isort in Py3.4 - typing is an external package, not in core, leading to conflict
+  - python -V | cut -d' ' -f 2 | cut -d . -f 1,2 | grep -vq '3.4' && isort --verbose --check-only --diff --recursive src tests setup.py
+  - mypy src tests
+  - pylint src tests setup.py
   - py.test --cov-report= --cov=\. -vv tests
 after_success:
   - coverage combine --append && coverage report && coverage html && codecov
