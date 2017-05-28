@@ -48,7 +48,11 @@ setup(
     zip_safe=False,
 
     setup_requires=['pytest-runner'],
-    install_requires=['typing'],
+    extras_require={
+        ':python_version < "3.5"': [
+            'typing==3.6.1',
+        ],
+    },
     test_suite='tests',
     tests_require=TESTS_REQUIRE,
 
