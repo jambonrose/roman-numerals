@@ -18,19 +18,19 @@ from setuptools import find_packages, setup
 HERE = path.abspath(path.dirname(__file__))
 
 
+def load_file_contents(file_path, as_list=True):
+    """Load file as string or list"""
+    abs_file_path = path.join(HERE, file_path)
+    with codec_open(abs_file_path, encoding='utf-8') as file_pointer:
+        if as_list:
+            return file_pointer.read().splitlines()
+        return file_pointer.read()
+
+
 # Get the long description from the Read Me
-with codec_open(path.join(HERE, 'README.rst'), encoding='utf-8') as f:
-    LONG_DESCRIPTION = f.read()
-
+LONG_DESCRIPTION = load_file_contents('README.rst', as_list=False)
 # Get test dependencies
-TEST_REQS = 'requirements/test_requirements.txt'
-with codec_open(path.join(HERE, TEST_REQS), encoding='utf-8') as f:
-    TESTS_REQUIRE = f.read().splitlines()
-
-# Get test dependencies
-INSTALL_REQS = 'requirements/install_requirements.txt'
-with codec_open(path.join(HERE, INSTALL_REQS), encoding='utf-8') as f:
-    INSTALL_REQUIRE = f.read().splitlines()
+TESTS_REQUIRE = load_file_contents('requirements/test_requirements.txt')
 
 setup(
     name='roman-numerals',
@@ -48,7 +48,11 @@ setup(
     zip_safe=False,
 
     setup_requires=['pytest-runner'],
-    install_requires=INSTALL_REQUIRE,
+    extras_require={
+        ':python_version < "3.5"': [
+            'typing==3.6.1',
+        ],
+    },
     test_suite='tests',
     tests_require=TESTS_REQUIRE,
 

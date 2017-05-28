@@ -29,7 +29,7 @@ def test_integer_conversion(
     True,
     set(),
     {'hello': 4},
-    lambda: print('called!'),
+    lambda: print('called!'),  # pragma: no cover
 ])
 def test_invalid_types(non_strings: Any) -> None:
     """

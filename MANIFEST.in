@@ -2,6 +2,7 @@ include .bumpversion.cfg
 include .coveragerc
 include .isort.cfg
 include .pylintrc
+include .pyup.yml
 include LICENSE
 include mypy.ini
 include tox.ini
