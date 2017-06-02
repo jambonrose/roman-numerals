@@ -12,10 +12,10 @@ environment:
     - PYTHON: "C:\\Python35"
     - PYTHON: "C:\\Python36"
 install:
-  - "build.cmd %PYTHON%\\python.exe -m pip install six wheel setuptools"
-  - "build.cmd %PYTHON%\\python.exe -m pip install -r requirements/check_requirements.txt"
-  - "build.cmd %PYTHON%\\python.exe -m pip install -r requirements/test_requirements.txt"
-  - "build.cmd %PYTHON%\\python.exe -m pip install -r requirements/development_requirements.txt"
+  - "%CMD_IN_ENV% %PYTHON%\\python.exe -m pip install six wheel setuptools"
+  - "%CMD_IN_ENV% %PYTHON%\\python.exe -m pip install -r requirements/check_requirements.txt"
+  - "%CMD_IN_ENV% %PYTHON%\\python.exe -m pip install -r requirements/test_requirements.txt"
+  - "%CMD_IN_ENV% %PYTHON%\\python.exe -m pip install -r requirements/development_requirements.txt"
   - "%PYTHON%\\python.exe setup.py develop"
 test_script:
   - "%PYTHON%\\python.exe setup.py test"
