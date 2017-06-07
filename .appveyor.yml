@@ -9,14 +9,11 @@ environment:
   matrix:
     # http://www.appveyor.com/docs/installed-software#python
     - PYTHON: "C:\\Python34"
-      DISTUTILS_USE_SDK: 1
     - PYTHON: "C:\\Python35"
     - PYTHON: "C:\\Python36"
 install:
   - "%PYTHON%\\python.exe -m pip install six wheel setuptools"
-  - "%PYTHON%\\python.exe -m pip install -r requirements/check_requirements.txt"
   - "%PYTHON%\\python.exe -m pip install -r requirements/test_requirements.txt"
-  - "%PYTHON%\\python.exe -m pip install -r requirements/development_requirements.txt"
   - "%PYTHON%\\python.exe setup.py develop"
 test_script:
   - "%PYTHON%\\python.exe setup.py test"
