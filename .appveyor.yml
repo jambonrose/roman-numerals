@@ -1,0 +1,22 @@
+version: '{branch}-{build}'
+branches:
+  only:
+    - master
+build: off
+cache:
+  - '%LOCALAPPDATA%\pip\Cache'
+image:
+- Visual Studio 2015
+- Visual Studio 2017
+environment:
+  matrix:
+    # http://www.appveyor.com/docs/installed-software#python
+    - PYTHON: "C:\\Python34"
+    - PYTHON: "C:\\Python35"
+    - PYTHON: "C:\\Python36"
+install:
+  - "%PYTHON%\\python.exe -m pip install six wheel setuptools"
+  - "%PYTHON%\\python.exe -m pip install -r requirements/test_requirements.txt"
+  - "%PYTHON%\\python.exe setup.py develop"
+test_script:
+  - "%PYTHON%\\python.exe setup.py test"
