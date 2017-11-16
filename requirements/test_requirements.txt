@@ -1,4 +1,4 @@
-coverage==4.4.1
+coverage==4.4.2
 pytest-cov==2.5.1
 pytest==3.2.3
 tox==2.9.1
