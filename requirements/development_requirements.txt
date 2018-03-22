@@ -2,4 +2,4 @@ bumpversion==0.5.3
 setuptools==39.0.1
 six==1.11.0
 tox==2.9.1
-twine==1.10.0
+twine==1.11.0
