@@ -1,5 +1,7 @@
 # https://pyup.io/docs/configuration/
-
-update: all
+branch: development
+branch_prefix: update/
 pin: True
-schedule: "every week on thursday"
+pr_prefix: "❗️ "
+schedule: "every month"
+update: all
