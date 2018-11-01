@@ -5,4 +5,4 @@ isort==4.3.4
 mypy==0.641
 Pygments==2.2.0
 pylint==2.1.1
-readme-renderer==21.0
+readme-renderer==24.0
