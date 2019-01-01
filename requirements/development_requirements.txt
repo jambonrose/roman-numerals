@@ -1,5 +1,5 @@
 bumpversion==0.5.3
-setuptools==40.6.2
+setuptools==40.6.3
 six==1.11.0
 tox==3.5.3
 twine==1.12.1
