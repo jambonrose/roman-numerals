@@ -4,5 +4,5 @@ flake8==3.7.7
 isort==4.3.21
 mypy==0.711
 Pygments==2.4.2
-pylint==2.2.2
+pylint==2.3.1
 readme-renderer==24.0
