@@ -118,3 +118,14 @@ def convert_to_integer(roman_numeral: str) -> int:
             return_value += numerals_matched * integer
             partial_numeral = partial_numeral[chars_matched:]
     return return_value
+
+
+def undo_shortenings(value):
+  for full_string, shortening in SHORTENINGS:
+    value = value.replace(shortening, full_string)
+  return value
+
+
+def roman_to_ascii(value):
+  value = undo_shortenings(value=value)
+  return value.replace("Ⅰ", "I").replace("Ⅴ", "V").replace("Ⅹ", "X").replace("Ⅼ", "L").replace("Ⅽ", "C").replace("Ⅾ", "D").replace("Ⅿ", "M")
